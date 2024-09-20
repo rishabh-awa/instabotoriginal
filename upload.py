@@ -20,7 +20,7 @@ def setuplink():
     )
 
     # Path to the downloaded video (you can replace this with the in-memory file if needed)
-    video_path = r"temp\tempo.mp4"
+    video_path = r"temp/tempo.mp4"
 
     # Upload the video to Cloudinary
     upload_result = cloudinary.uploader.upload_large(
