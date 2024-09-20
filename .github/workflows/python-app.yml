@@ -6,6 +6,8 @@ name: Python application
 on:
   workflow_dispatch:
   # Schedule to run the job every hour
+  schedule:
+    		- cron: '0 0 * * *'
   
 jobs:
   run-script:
@@ -15,7 +17,7 @@ jobs:
     # Step 1: Check out the repository
     - name: Checkout repository
       uses: actions/checkout@v2
-
+      
     # Step 2: Set up Python environment
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -28,7 +30,13 @@ jobs:
         pip install -r requirements.txt
 
     # Step 3: Generate a random delay between 0 and 24 hours
-
+    - name: Introduce random delay
+      run: |
+        echo "Adding a random delay before executing the script"
+        # Generate a random delay between 0 and 12 hours (in seconds)
+        RANDOM_DELAY=$((RANDOM % 43200))  # 12 hours = 43200 seconds
+        echo "Sleeping for $RANDOM_DELAY seconds"
+        sleep $RANDOM_DELAY
 
       
     - name: Set up environment variables
