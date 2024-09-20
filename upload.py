@@ -67,7 +67,7 @@ def post():
 
     print("Instagram Account ID:", data)
     print(dat)
-    return urlforvideo[1]
+    cloudinary.uploader.destroy(urlforvideo[1], resource_type="video")   
 
 def complete():
     createpost()
