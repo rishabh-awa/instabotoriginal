@@ -24,6 +24,13 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Generate random delay
+      run: |
+        DELAY=$(( RANDOM % (24 * 60 * 60) ))  # Random delay between 0 and 86400 seconds (24 hours)
+        echo "Sleeping for $DELAY seconds..."
+        sleep $DELAY
+
+
    # Step 3: Install dependencies (if you have a requirements.txt file)
     - name: Install dependencies
       run: |
