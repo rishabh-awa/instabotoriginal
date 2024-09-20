@@ -43,7 +43,7 @@ def post():
     # Facebook API endpoint for fetching accounts
     urlforvideo = setuplink()
     urlvideo = urlforvideo[0]
-    text = "Let me manipulate you into being better.\n \n follow: @asxension.n.glory\nfollow: @asxension.n.glory \n\n #strongmen #stoics #growth"
+    text = "Let me manipulate you into being better.\n \n follow: @asxension.n.glory\nfollow: @asxension.n.glory \n\n %23strongmen %23stoics %23growth"
 
     posturi= f"https://graph.facebook.com/v20.0/17841468375966036/media?media_type=REELS&video_url={urlvideo}&caption={text}&access_token={access_token}"
     # Make the request
