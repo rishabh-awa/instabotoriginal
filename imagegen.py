@@ -98,7 +98,7 @@ def createpost():
     draw = ImageDraw.Draw(image)
 
     # Define the font (you may need to specify the path to a .ttf font file on your system)
-    font_path = r"font\LibreBaskerville-Bold.ttf"  # Adjust path as needed
+    font_path = r"font/LibreBaskerville-Bold.ttf"  # Adjust path as needed
     image_width, image_height = image.size
     
     # Try to fit the text by decreasing font size until it fits
