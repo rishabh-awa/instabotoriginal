@@ -1,4 +1,4 @@
-import undetected_chromedriver as uc
+import undetected_chromedriver.v2 as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -24,7 +24,7 @@ def getimage(quotename):
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 
-    driver = uc.Chrome(options=chrome_options)
+    driver = uc.Chrome(options=chrome_options,version_main=128)
     driver.get("https://www.artbreeder.com/create/composer")
     time.sleep(1)
     ele = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
