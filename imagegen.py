@@ -12,6 +12,8 @@ import os
 from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 import textwrap
 
+from moviepy.editor import ImageClip,AudioFileClip
+
 def getimage(quotename):
     chrome_options = Options()
 
@@ -46,7 +48,7 @@ def getimage(quotename):
 
     image = Image.open(r"temp/tempo.jpg")
     enhancer = ImageEnhance.Brightness(image)
-    darkened_image = enhancer.enhance(0.7)   
+    darkened_image = enhancer.enhance(0.8)   
     darkened_image.save("temp/tempo.jpg")
     driver.close()
 
@@ -74,6 +76,15 @@ def getstoicquote():
 
 print(getstoicquote())
 
+def convertclip(path="temp/content.jpg" ,duration=8,outputpath="temp/tempo.mp4",audio_path="contentmusic.mp3"):
+    clip = ImageClip(path, duration=duration)
+    audio = AudioFileClip(audio_path)
+    # Set the frame rate (frames per second)
+    clip = clip.set_fps(24)  # You can adjust the frame rate as needed
+    audio = audio.subclip(0, duration)
+    # Write the video file
+    clip = clip.set_audio(audio)
+    clip.write_videofile(outputpath, codec='libx264')
 
 def createpost():
         # Open the image
@@ -124,8 +135,10 @@ def createpost():
     # Save the image with text
     image.save("temp/content.jpg")
     os.remove(r"temp/tempo.jpg")
-
+    convertclip()
+    os.remove(r"temp/content.jpg")
 # Example usage
+
 
 
 createpost()
