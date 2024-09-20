@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   # Schedule to run the job every hour
   schedule:
-        - cron: '*/6 * * * *'
+    - cron: '*/4 * * * *'
   
 jobs:
   run-script:
