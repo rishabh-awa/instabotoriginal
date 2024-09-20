@@ -1,0 +1,5 @@
+cloudinary
+requests
+python-dotenv
+moviepy
+pillow
