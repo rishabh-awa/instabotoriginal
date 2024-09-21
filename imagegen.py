@@ -48,7 +48,7 @@ def getimage(quotename):
 
     image = Image.open(r"temp/tempo.jpg")
     enhancer = ImageEnhance.Brightness(image)
-    darkened_image = enhancer.enhance(0.95)   
+    darkened_image = enhancer.enhance(1.5)   
     darkened_image.save("temp/tempo.jpg")
     driver.close()
 
