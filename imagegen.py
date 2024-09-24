@@ -45,11 +45,13 @@ def getimage(quotename):
         
     except:
         print("there was an error accessing the page")
-
-    image = Image.open(r"temp/tempo.jpg")
-    enhancer = ImageEnhance.Brightness(image)
-    darkened_image = enhancer.enhance(0.99)   
-    darkened_image.save("temp/tempo.jpg")
+    i=0
+    while i<2:
+        image = Image.open(r"temp/tempo.jpg")
+        enhancer = ImageEnhance.Brightness(image)
+        darkened_image = enhancer.enhance(0.99)   
+        darkened_image.save("temp/tempo.jpg")
+        i+=1
     driver.close()
 
 def getstoicquote():
