@@ -45,13 +45,7 @@ def getimage(quotename):
         
     except:
         print("there was an error accessing the page")
-    i=0
-    while i<2:
-        image = Image.open(r"temp/tempo.jpg")
-        enhancer = ImageEnhance.Brightness(image)
-        darkened_image = enhancer.enhance(0.99)   
-        darkened_image.save("temp/tempo.jpg")
-        i+=1
+
     driver.close()
 
 def getstoicquote():
@@ -96,6 +90,10 @@ def createpost():
     text = f"{quote}\n- {author}"
     getimage(author)
     image = Image.open(r"temp/tempo.jpg")
+    dark_overlay = Image.new('RGBA', image.size, (0, 0, 0, 128))
+    image = Image.alpha_composite(image.convert('RGBA'), dark_overlay)
+
+    draw = ImageDraw.Draw(image)
 
     draw = ImageDraw.Draw(image)
 
@@ -133,7 +131,7 @@ def createpost():
 
     
     # Add the text to the image
-    
+    image = image.convert('RGB')
     # Save the image with text
     image.save("temp/content.jpg")
     os.remove(r"temp/tempo.jpg")
