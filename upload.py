@@ -45,28 +45,30 @@ def post():
     urlvideo = urlforvideo[0]
     text = "Let me manipulate you into being better.\n \n follow: @asxension.n.glory\nfollow: @asxension.n.glory \n\n %23strongmen %23stoics %23growth"
 
-    posturi= f"https://graph.facebook.com/v20.0/17841468375966036/media?media_type=REELS&video_url={urlvideo}&caption={text}&access_token={access_token}"
-    # Make the request
-    post = requests.post(posturi)
-    data = post.json()
+    accounts = ["17841468375966036","17841469797379138"]
+    for i in accounts:
+        posturi= f"https://graph.facebook.com/v20.0/{i}/media?media_type=REELS&video_url={urlvideo}&caption={text}&access_token={access_token}"
+        # Make the request
+        post = requests.post(posturi)
+        data = post.json()
 
-    id = int(data["id"])
-    print(id)
+        id = int(data["id"])
+        print(id)
 
-    while stat==None or stat=='IN_PROGRESS':
-        staturi=f"https://graph.facebook.com/v20.0/{id}?fields=status_code&access_token={access_token}"
-        status = requests.get(staturi)
-        stat = status.json()
-        stat = stat["status_code"]
-        time.sleep(3)
-    print(stat)
-    publishuri = f"https://graph.facebook.com/v20.0/17841468375966036/media_publish?creation_id={id}&access_token={access_token}"
-    publish = requests.post(publishuri)
-    dat = publish.json()
+        while stat==None or stat=='IN_PROGRESS':
+            staturi=f"https://graph.facebook.com/v20.0/{id}?fields=status_code&access_token={access_token}"
+            status = requests.get(staturi)
+            stat = status.json()
+            stat = stat["status_code"]
+            time.sleep(3)
+        print(stat)
+        publishuri = f"https://graph.facebook.com/v20.0/{i}/media_publish?creation_id={id}&access_token={access_token}"
+        publish = requests.post(publishuri)
+        dat = publish.json()
 
 
-    print("Instagram Account ID:", data)
-    print(dat)
+        print("Instagram Account ID:", data)
+        print(dat)
     cloudinary.uploader.destroy(urlforvideo[1], resource_type="video")   
 
 def complete():
