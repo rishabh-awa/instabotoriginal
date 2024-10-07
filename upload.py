@@ -36,17 +36,17 @@ def setuplink():
 
 
 def post():
-    
-    stat = None
-    # Access Token (replace with your token)
-    access_token = os.getenv("ACCESS")
-    # Facebook API endpoint for fetching accounts
-    urlforvideo = setuplink()
-    urlvideo = urlforvideo[0]
-    text = "Let me manipulate you into being better.\n \n follow: @asxension.n.glory\nfollow: @asxension.n.glory \n\n %23strongmen %23stoics %23growth"
-
     accounts = ["17841469797379138","17841468375966036"]
-    for i in accounts:
+    for i in accounts:    
+        stat = None
+        # Access Token (replace with your token)
+        access_token = os.getenv("ACCESS")
+        # Facebook API endpoint for fetching accounts
+        urlforvideo = setuplink()
+        urlvideo = urlforvideo[0]
+        text = "Let me manipulate you into being better.\n \n follow: @asxension.n.glory\nfollow: @asxension.n.glory \n\n %23strongmen %23stoics %23growth"
+
+
         posturi= f"https://graph.facebook.com/v20.0/{i}/media?media_type=REELS&video_url={urlvideo}&caption={text}&access_token={access_token}"
         # Make the request
         post = requests.post(posturi)
