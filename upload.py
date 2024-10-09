@@ -41,7 +41,7 @@ def post():
     for i in accounts:    
         stat = None
         tempoi = int(i)
-        accname = diciton[tempoi]
+        accname = diction[tempoi]
         # Access Token (replace with your token)
         access_token = os.getenv("ACCESS")
         # Facebook API endpoint for fetching accounts
