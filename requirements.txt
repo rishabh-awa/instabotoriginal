@@ -5,3 +5,4 @@ moviepy
 pillow
 selenium
 undetected-chromedriver
+webdriver-manager
